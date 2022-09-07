@@ -5,10 +5,18 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <div className="logo">
+      <Link to="/" className="logo">
         Letterbox
-      </div>
-
+      </Link>
+      <Link to="/login" className="loginLink">
+        Sign In
+      </Link>
+      <Link to="/create" className="createLink">
+        Create Account
+      </Link>
+      <Link to="/films" className="filmsLink">
+        Films
+      </Link>
     </div>
   )
 }
