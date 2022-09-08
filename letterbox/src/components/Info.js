@@ -18,10 +18,9 @@ const Info = () => {
 
       setMovie(json);
     }
-    fetchMovie()
+    fetchMovie();
 
   }, [])
-
 
   return (
     <div className="infoPage">
@@ -36,7 +35,7 @@ const Info = () => {
           </div>
           <div className="movieText">
             <p className="title">{movie.title}</p>
-            <p className="year">{movie.release_date.slice(0, 4)}</p>
+            <p className="year">{movie.release_date}</p>
             <p className="runtime">{movie.runtime} minutes</p>
             <p className="tagline">{movie.tagline}</p>
             <p className="description">{movie.overview}</p>
