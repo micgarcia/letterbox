@@ -56,7 +56,8 @@ table {
 	display: grid;
 	grid-template-rows: 50px 1fr;
 
-	background-color: rgb(21, 24, 28);
+	background-color: rgba(21, 24, 28, 0);
+
 }
 
 /*
@@ -69,8 +70,9 @@ table {
 	display: grid;
 	grid-template-rows: 1fr;
 	grid-template-columns: 4fr repeat(3, 1fr);
-	width: 75%;
 	justify-self: center;
+	background-color: rgba(21, 24, 28, 0);
+
 }
 
 .navbar a {
@@ -98,9 +100,11 @@ table {
 */
 
 .homeContent {
-	padding-top: 1em;
 	display: grid;
-
+	position: absolute;
+	background-color: rgb(21, 24, 28);
+	z-index: -1;
+	width: 100%;
 }
 
 .picCont {
