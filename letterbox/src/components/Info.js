@@ -29,10 +29,14 @@ const Info = () => {
     const auth = getAuth();
     const user = auth.currentUser;
     const id = movie.id;
+    const url = 'https://image.tmdb.org/t/p/original' + movie.poster_path;
+    const title = movie.title;
 
     const moviesRef = doc(db, user.email, "watched");
     updateDoc(moviesRef, {
-      movies: arrayUnion(id)
+      movies: arrayUnion(id),
+      posters: arrayUnion(url),
+      titles: arrayUnion(title)
     })
 
   }
