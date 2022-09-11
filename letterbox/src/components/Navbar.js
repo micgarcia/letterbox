@@ -1,12 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { useState, useEffect } from 'react';
 
 
 const Navbar = () => {
+  const [user, setUser] = useState({});
 
-  const auth = getAuth();
-  const user = auth.currentUser;
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (data) => {
+      if (data) {
+        setUser(data);
+        console.log(user);
+        handleChange();
+      }
+    })
+  }, [])
+
+  const logout = () => {
+    const auth = getAuth();
+    signOut(auth).then(() => {
+      setUser(auth);
+      console.log(auth);
+    })
+  }
+
+  const handleChange = () => {
+
+  }
 
   if (user) {
     return(
@@ -17,6 +39,7 @@ const Navbar = () => {
       <Link to="/account" id="accountLink">
         {user.email}
       </Link>
+      <div className='logoutLink' onClick={logout}>Logout</div>
       <Link to="/films" id="filmsLink">
         Films
       </Link>

@@ -13,31 +13,7 @@ const Login = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, userEmail, userPassword)
       .then((userCredential) => {
-        const user = userCredential.user;
-        const nav = document.getElementById('navbar');
-        const userDiv = document.createElement('div');
-        userDiv.setAttribute('id', 'userDiv');
-        userDiv.innerHTML = user.email;
 
-        const loginLink = document.getElementById('loginLink');
-        const createLink = document.getElementById('createLink');
-        loginLink.remove();
-        createLink.remove();
-
-        const logout = document.createElement('div');
-        logout.setAttribute('id', 'logoutLink');
-        logout.innerHTML = 'Logout';
-        logout.onClick = () => {
-          console.log('click')
-          signOut(auth).then(() => {
-            userDiv.remove();
-
-          }).catch((error) => {
-
-          })
-        }
-        nav.appendChild(userDiv);
-        nav.appendChild(logout);
       })
       .catch((error) => {
         const errorMessage = error.message;
