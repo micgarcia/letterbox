@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import { useLocation } from 'react-router-dom';
 import '../Info.css';
+import { doc, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
+import { db } from './utils/firebase.js';
+import { getAuth } from "firebase/auth";
 
 const Info = () => {
   const location = useLocation();
@@ -21,6 +24,18 @@ const Info = () => {
     fetchMovie();
 
   }, [])
+
+  const handleClick = () => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const id = movie.id;
+
+    const moviesRef = doc(db, user.email, "watched");
+    updateDoc(moviesRef, {
+      movies: arrayUnion(id)
+    })
+
+  }
 
   return (
     <div className="infoPage">
@@ -40,6 +55,7 @@ const Info = () => {
             <p className="tagline">{movie.tagline}</p>
             <p className="description">{movie.overview}</p>
           </div>
+          <button onClick={handleClick}>Add to Watched</button>
           <div className="movieStream">
 
           </div>

@@ -66,7 +66,7 @@ table {
 	================
 */
 
-.navbar {
+#navbar {
 	display: grid;
 	grid-template-rows: 1fr;
 	grid-template-columns: 4fr repeat(3, 1fr);
@@ -75,18 +75,25 @@ table {
 
 }
 
-.navbar a {
+#navbar a {
 	text-decoration: none;
 }
 
-.logo {
+#logo {
 	font-size: 32px;
 	align-self: center;
 	justify-self: left;
 	color: rgb(239, 241, 243);
 }
 
-.loginLink, .createLink, .filmsLink {
+#loginLink, #createLink, #filmsLink {
+	font-size: 18px;
+	justify-self: center;
+	align-self: center;
+	color: rgb(217, 224, 231);
+}
+
+#userDiv {
 	font-size: 18px;
 	justify-self: center;
 	align-self: center;
