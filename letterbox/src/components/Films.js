@@ -20,20 +20,52 @@ const Films = () => {
       .then(function(response) {
         for (let i = 0; i < 20; i++) {
           console.log(response);
-          setTrendingIDs((prevIDs) => [...prevIDs, response.results[i].id]);
-          setTrendingPics((prevPics) => [...prevPics, ('https://image.tmdb.org/t/p/original' + response.results[i].poster_path)])
+          setCurrentIDs((prevIDs) => [...prevIDs, response.results[i].id]);
+          setCurrentPics((prevPics) => [...prevPics, ('https://image.tmdb.org/t/p/original' + response.results[i].poster_path)])
         }
       })
+  },[])
 
-      fetch('https://api.themoviedb.org/3/discover/movie?api_key=5ea30c3df8f6f36a3bae33585f1396c7&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=2&with_genres=53&with_watch_monetization_types=flatrate', {mode: 'cors'})
+  const sortPop = () => {
+    const grid = document.querySelector('.resultsGrid');
+    for (let child of grid.children) {
+      child.remove();
+    }
+
+    fetch('https://api.themoviedb.org/3/discover/movie?api_key=5ea30c3df8f6f36a3bae33585f1396c7&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=53&with_watch_monetization_types=flatrate', {mode: 'cors'})
       .then(function(response) {
         return response.json();
       })
       .then(function(response) {
-        console.log(response)
+        for (let i = 0; i < 20; i++) {
+          console.log(response);
+          setCurrentIDs((prevIDs) => [...prevIDs, response.results[i].id]);
+          setCurrentPics((prevPics) => [...prevPics, ('https://image.tmdb.org/t/p/original' + response.results[i].poster_path)])
+        }
+      })
+  }
+
+  const sortRecent = () => {
+    const grid = document.querySelector('.resultsGrid');
+    for (let child of grid.children) {
+      child.remove();
+    }
+
+    fetch('https://api.themoviedb.org/3/discover/movie?api_key=5ea30c3df8f6f36a3bae33585f1396c7&language=en-US&sort_by=release_date.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate', {mode: 'cors'})
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(response) {
+        for (let i = 0; i < 20; i++) {
+          console.log(response);
+          setCurrentIDs((prevIDs) => [...prevIDs, response.results[i].id]);
+          setCurrentPics((prevPics) => [...prevPics, ('https://image.tmdb.org/t/p/original' + response.results[i].poster_path)])
+        }
       })
 
-  },[])
+
+  }
+
   //Change genre values to genre codes
   return (
     <div className="filmsPage">
@@ -62,19 +94,19 @@ const Films = () => {
             <option value="Western">Western</option>
           </select>
 
-          <label htmlFor="year">Sort By Recent</label>
+          <label htmlFor="year" onClick={sortRecent}>Sort By Recent</label>
 
-          <label htmlFor="popularity">Sort By Popularity</label>
+          <label htmlFor="popularity" onClick={sortPop}>Sort By Popularity</label>
 
         </div>
         <div className="resultsTitle">
 
         </div>
         <div className="resultsGrid">
-          {trendingIDs.map((id, index) => {
+          {currentIDs.map((id, index) => {
             return (
               <Link to='/info' state={{ from: id}} key={id}>
-                <img src={trendingPics[index]} alt='' key={index}/>
+                <img src={currentPics[index]} alt='' key={index}/>
               </Link>
             )
           })}
