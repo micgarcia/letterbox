@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 
 const Navbar = () => {
   const [user, setUser] = useState({});
+  const [logged, setLogged] = useState();
 
   useEffect(() => {
     const auth = getAuth();
@@ -13,24 +14,22 @@ const Navbar = () => {
       if (data) {
         setUser(data);
         console.log(user);
-        handleChange();
+        setLogged(true);
+      } else {
+        setLogged(false);
       }
     })
-  }, [])
+  }, [logged])
 
   const logout = () => {
     const auth = getAuth();
     signOut(auth).then(() => {
       setUser(auth);
-      console.log(auth);
     })
   }
 
-  const handleChange = () => {
 
-  }
-
-  if (user) {
+  if (logged) {
     return(
       <div id="navbar">
       <Link to="/" id="logo">
