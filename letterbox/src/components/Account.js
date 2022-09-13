@@ -65,8 +65,10 @@ const Account = () => {
       <div className="userEmail">
         {user.email}
       </div>
+      <div className="watchedTitle">
+        Watched Movies
+      </div>
       <div className="watchedMovies">
-      Watched Movies
       {id.map((ID, index) => {
           return (
             <div key={ID} className='movieCont'>
@@ -76,8 +78,10 @@ const Account = () => {
           )
         })}
       </div>
+      <div className="futureTitle">
+        Watch Later Movies
+      </div>
       <div className="futureMovies">
-      Watch Later Movies
       {futureId.map((ID, index) => {
           return (
             <div key={ID} className='movieCont'>
