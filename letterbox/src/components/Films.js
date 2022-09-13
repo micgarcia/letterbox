@@ -13,64 +13,76 @@ const Films = () => {
   const [currentIDs, setCurrentIDs] = useState([]);
 
   useEffect(() => {
-    fetch('https://api.themoviedb.org/3/trending/movie/week?api_key=5ea30c3df8f6f36a3bae33585f1396c7', {mode: 'cors'})
+    for (let i = 1; i < 5; i++) {
+      fetch('https://api.themoviedb.org/3/trending/movie/week?api_key=5ea30c3df8f6f36a3bae33585f1396c7&page=' + i, {mode: 'cors'})
       .then(function(response) {
         return response.json();
       })
       .then(function(response) {
-        for (let i = 0; i < 20; i++) {
-          setCurrentIDs((prevIDs) => [...prevIDs, response.results[i].id]);
-          setCurrentPics((prevPics) => [...prevPics, ('https://image.tmdb.org/t/p/original' + response.results[i].poster_path)])
+        console.log(response);
+        for (let j = 0; j < 20; j++) {
+          if (response.results[j].original_language === 'en') {
+            setCurrentIDs((prevIDs) => [...prevIDs, response.results[j].id]);
+            setCurrentPics((prevPics) => [...prevPics, ('https://image.tmdb.org/t/p/original' + response.results[j].poster_path)]);
+          }
         }
       })
+    }
+    const title = document.querySelector('.resultsTitle');
+    title.innerHTML = 'Trending Movies';
+
   },[])
 
   const sortPop = () => {
     setCurrentIDs([]);
     setCurrentPics([]);
 
-    fetch('https://api.themoviedb.org/3/discover/movie?api_key=5ea30c3df8f6f36a3bae33585f1396c7&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1', {mode: 'cors'})
+    for (let i = 1; i < 5; i++) {
+      fetch('https://api.themoviedb.org/3/discover/movie?api_key=5ea30c3df8f6f36a3bae33585f1396c7&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=' + i, {mode: 'cors'})
       .then(function(response) {
         return response.json();
       })
       .then(function(response) {
-        for (let i = 0; i < 20; i++) {
-          setCurrentIDs((prevIDs) => [...prevIDs, response.results[i].id]);
-          setCurrentPics((prevPics) => [...prevPics, ('https://image.tmdb.org/t/p/original' + response.results[i].poster_path)]);
+        console.log(response);
+        for (let j = 0; j < 20; j++) {
+          if (response.results[j].original_language === 'en') {
+            setCurrentIDs((prevIDs) => [...prevIDs, response.results[j].id]);
+            setCurrentPics((prevPics) => [...prevPics, ('https://image.tmdb.org/t/p/original' + response.results[j].poster_path)]);
+          }
         }
-        fetch('https://api.themoviedb.org/3/discover/movie?api_key=5ea30c3df8f6f36a3bae33585f1396c7&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=2', {mode: 'cors'})
-          .then(function(json) {
-            return json.json();
-          })
-          .then(function(data) {
-            for (let i = 0; i < 20; i++) {
-              setCurrentIDs((prevIDs) => [...prevIDs, data.results[i].id]);
-              setCurrentPics((prevPics) => [...prevPics, ('https://image.tmdb.org/t/p/original' + data.results[i].poster_path)]);
-            }
-          })
       })
+    }
+    const title = document.querySelector('.resultsTitle');
+    title.innerHTML = 'Popular Movies';
   }
 
   const sortRecent = () => {
     setCurrentIDs([]);
     setCurrentPics([]);
 
-    fetch('https://api.themoviedb.org/3/discover/movie?api_key=5ea30c3df8f6f36a3bae33585f1396c7&language=en&sort_by=release_date.desc&include_adult=false&include_video=false&page=1&year=2022&vote_average.gte=6', {mode: 'cors'})
+    for (let i = 1; i < 5; i++) {
+      fetch('https://api.themoviedb.org/3/discover/movie?api_key=5ea30c3df8f6f36a3bae33585f1396c7&language=en&sort_by=release_date.desc&include_adult=false&include_video=false&page=' + i + '&year=2022&vote_average.gte=6', {mode: 'cors'})
       .then(function(response) {
         return response.json();
       })
       .then(function(response) {
-        for (let i = 0; i < 20; i++) {
-          setCurrentIDs((prevIDs) => [...prevIDs, response.results[i].id]);
-          setCurrentPics((prevPics) => [...prevPics, ('https://image.tmdb.org/t/p/original' + response.results[i].poster_path)]);
+        console.log(response);
+        for (let j = 0; j < 20; j++) {
+          if (response.results[j].original_language === 'en') {
+            setCurrentIDs((prevIDs) => [...prevIDs, response.results[j].id]);
+            setCurrentPics((prevPics) => [...prevPics, ('https://image.tmdb.org/t/p/original' + response.results[j].poster_path)]);
+          }
         }
-
       })
+    }
+    const title = document.querySelector('.resultsTitle');
+    title.innerHTML = 'Recent Movies';
   }
 
   const sortGenre = () => {
     let selectElement = document.querySelector('#genres');
     let genre = selectElement.options[selectElement.selectedIndex].value;
+    let genreName = selectElement.options[selectElement.selectedIndex].innerHTML;
     setCurrentIDs([]);
     setCurrentPics([]);
 
@@ -88,36 +100,9 @@ const Films = () => {
           }
         }
       })
-
     }
-    /*
-    fetch('https://api.themoviedb.org/3/discover/movie?api_key=5ea30c3df8f6f36a3bae33585f1396c7&language=en&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&vote_average.gte=6&with_genres=' + genre, {mode: 'cors'})
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(response) {
-      console.log(response);
-      for (let i = 0; i < 20; i++) {
-        if (response.results.original_language === 'en') {
-          setCurrentIDs((prevIDs) => [...prevIDs, response.results[i].id]);
-          setCurrentPics((prevPics) => [...prevPics, ('https://image.tmdb.org/t/p/original' + response.results[i].poster_path)]);
-        }
-      }
-      fetch('https://api.themoviedb.org/3/discover/movie?api_key=5ea30c3df8f6f36a3bae33585f1396c7&language=en&sort_by=popularity.desc&include_adult=false&include_video=false&page=2&vote_average.gte=6&with_genres=' + genre, {mode: 'cors'})
-          .then(function(json) {
-            return json.json();
-          })
-          .then(function(data) {
-            for (let i = 0; i < 20; i++) {
-              console.log(response.results[i].original_language)
-              if (response.results[i].original_language === 'en') {
-                setCurrentIDs((prevIDs) => [...prevIDs, response.results[i].id]);
-                setCurrentPics((prevPics) => [...prevPics, ('https://image.tmdb.org/t/p/original' + response.results[i].poster_path)]);
-              }
-            }
-          })
-    })
-    */
+    const title = document.querySelector('.resultsTitle');
+    title.innerHTML = genreName + ' Movies';
   }
 
   //Change genre values to genre codes
