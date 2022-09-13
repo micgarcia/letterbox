@@ -74,6 +74,23 @@ const Films = () => {
     setCurrentIDs([]);
     setCurrentPics([]);
 
+    for (let i = 1; i < 5; i++) {
+      fetch('https://api.themoviedb.org/3/discover/movie?api_key=5ea30c3df8f6f36a3bae33585f1396c7&language=en&sort_by=popularity.desc&include_adult=false&include_video=false&page=' + i + '&vote_average.gte=6&with_genres=' + genre, {mode: 'cors'})
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(response) {
+        console.log(response);
+        for (let j = 0; j < 20; j++) {
+          if (response.results[j].original_language === 'en') {
+            setCurrentIDs((prevIDs) => [...prevIDs, response.results[j].id]);
+            setCurrentPics((prevPics) => [...prevPics, ('https://image.tmdb.org/t/p/original' + response.results[j].poster_path)]);
+          }
+        }
+      })
+
+    }
+    /*
     fetch('https://api.themoviedb.org/3/discover/movie?api_key=5ea30c3df8f6f36a3bae33585f1396c7&language=en&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&vote_average.gte=6&with_genres=' + genre, {mode: 'cors'})
     .then(function(response) {
       return response.json();
@@ -81,8 +98,10 @@ const Films = () => {
     .then(function(response) {
       console.log(response);
       for (let i = 0; i < 20; i++) {
-        setCurrentIDs((prevIDs) => [...prevIDs, response.results[i].id]);
-        setCurrentPics((prevPics) => [...prevPics, ('https://image.tmdb.org/t/p/original' + response.results[i].poster_path)]);
+        if (response.results.original_language === 'en') {
+          setCurrentIDs((prevIDs) => [...prevIDs, response.results[i].id]);
+          setCurrentPics((prevPics) => [...prevPics, ('https://image.tmdb.org/t/p/original' + response.results[i].poster_path)]);
+        }
       }
       fetch('https://api.themoviedb.org/3/discover/movie?api_key=5ea30c3df8f6f36a3bae33585f1396c7&language=en&sort_by=popularity.desc&include_adult=false&include_video=false&page=2&vote_average.gte=6&with_genres=' + genre, {mode: 'cors'})
           .then(function(json) {
@@ -90,11 +109,15 @@ const Films = () => {
           })
           .then(function(data) {
             for (let i = 0; i < 20; i++) {
-              setCurrentIDs((prevIDs) => [...prevIDs, data.results[i].id]);
-              setCurrentPics((prevPics) => [...prevPics, ('https://image.tmdb.org/t/p/original' + data.results[i].poster_path)]);
+              console.log(response.results[i].original_language)
+              if (response.results[i].original_language === 'en') {
+                setCurrentIDs((prevIDs) => [...prevIDs, response.results[i].id]);
+                setCurrentPics((prevPics) => [...prevPics, ('https://image.tmdb.org/t/p/original' + response.results[i].poster_path)]);
+              }
             }
           })
     })
+    */
   }
 
   //Change genre values to genre codes
