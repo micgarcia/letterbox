@@ -19,6 +19,9 @@ const Create = () => {
         setDoc(doc(db, user.email, 'watched'), {
           movies: []
         });
+        setDoc(doc(db, user.email, 'future'), {
+          movies: []
+        });
       })
       .catch((error) => {
         const errorMessage = error.message;

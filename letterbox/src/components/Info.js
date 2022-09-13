@@ -38,7 +38,21 @@ const Info = () => {
       posters: arrayUnion(url),
       titles: arrayUnion(title)
     })
+  }
 
+  const addFuture = () => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const id = movie.id;
+    const url = 'https://image.tmdb.org/t/p/original' + movie.poster_path;
+    const title = movie.title;
+
+    const futureRef = doc(db, user.email, "future");
+    updateDoc(futureRef, {
+      movies: arrayUnion(id),
+      posters: arrayUnion(url),
+      titles: arrayUnion(title)
+    })
   }
 
   return (
@@ -60,6 +74,7 @@ const Info = () => {
             <p className="description">{movie.overview}</p>
           </div>
           <button onClick={handleClick}>Add to Watched</button>
+          <button onClick={addFuture}>Add to Watch Later</button>
           <div className="movieStream">
 
           </div>
