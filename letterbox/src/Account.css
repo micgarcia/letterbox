@@ -2,8 +2,10 @@
   color: white;
   display: grid;
   min-width: 900px;
-  grid-template-rows: 50px 25px 1fr 25px 1fr;
+  grid-template-rows: 75px 25px 1fr 25px 1fr;
   row-gap: 2em;
+
+  background: linear-gradient(#2c3440, rgb(21, 24, 28) 30%);
 }
 
 #navbar {
@@ -13,6 +15,9 @@
   align-items: center;
   justify-items: center;
   color: white;
+
+  background-color: rgb(21, 24, 28);
+  padding: 1em 25% 1em 25%;
 }
 
 #accountLink, .logoutLink, #filmsLink, #loginLink, #createLink {

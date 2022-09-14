@@ -10,10 +10,12 @@ import Info from './components/Info.js';
 import Create from './components/Create.js';
 import Login from './components/Login.js';
 import Account from './components/Account.js';
+import './fonts.css';
 
 
 function App() {
   return (
+
     <div className="App">
     <BrowserRouter>
       <Routes>

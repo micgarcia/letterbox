@@ -2,8 +2,10 @@
   color: white;
   display: grid;
   min-width: 900px;
-  grid-template-rows: 50px 1fr;
+  grid-template-rows: 75px 1fr;
   row-gap: 2em;
+
+  background: linear-gradient(#2c3440, rgb(21, 24, 28) 10%);
 }
 
 #navbar {
@@ -13,18 +15,23 @@
   align-items: center;
   justify-items: center;
   color: white;
+  background-color: rgb(21, 24, 28);
+  padding: 1em 25% 1em 25%;
 }
 
 .filmsContent {
   display: grid;
   grid-template-rows: 75px 75px 1fr;
+
 }
+
+
 
 .filters {
   display: grid;
   justify-self: center;
   grid-template-rows: 1fr;
-  grid-template-columns: 75px 125px 160px 160px;
+  grid-template-columns: 75px 125px 200px 200px;
   padding-left: 2em;
   font-size: 20px;
   justify-items: center;
@@ -33,6 +40,13 @@
 
 label {
   justify-self: right;
+  transition: transform 0.2s;
+}
+
+label:hover {
+  cursor: pointer;
+  color: greenyellow;
+  transform: scale(1.1)
 }
 
 .resultsTitle {
@@ -60,10 +74,12 @@ label {
 	border-style: solid;
 	border-width: 0.2px;
 	border-color: rgb(217, 224, 231);
+  transition: transform .2s
+
 }
 
 .resultsGrid img:hover {
   border-color: greenyellow;
-  border-width: 1px;
+  transform: scale(1.2);
 }
 

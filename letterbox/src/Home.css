@@ -51,12 +51,15 @@ table {
 	Home Page
 	================
 */
+.App {
+	font-family: 'Poppins', sans-serif;
+}
 
 #homePage {
 	display: grid;
-	grid-template-rows: 50px 1fr;
+	grid-template-rows: 75px 1fr;
+	min-width: 1200px;
 
-	background-color: rgba(21, 24, 28, 0);
 
 }
 
@@ -66,17 +69,33 @@ table {
 	================
 */
 
-#navbar {
+#homePage #navbar {
 	display: grid;
-	grid-template-rows: 1fr;
-	grid-template-columns: 4fr repeat(3, 1fr);
+  width: 60%;
+  grid-template-columns: 3fr repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
 	justify-self: center;
-	background-color: rgba(21, 24, 28, 0);
+  color: white;
+	background-color: rgba(21, 24, 28,0);
 
 }
 
-#navbar a {
+#navbar a, .logoutLink {
 	text-decoration: none;
+	transition: transform 0.2s;
+}
+
+#navbar a:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+	color: greenyellow;
+}
+
+#navbar .logoutLink:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+	color: greenyellow;
 }
 
 #logo {
@@ -109,9 +128,9 @@ table {
 .homeContent {
 	display: grid;
 	position: absolute;
-	background-color: rgb(21, 24, 28);
 	z-index: -1;
 	width: 100%;
+	background-color: rgb(21, 24, 28);
 }
 
 .picCont {
@@ -135,6 +154,7 @@ table {
 	font-size: 36px;
 	color: #fff;
 	font-weight: bold;
+	font-family: 'Abril Fatface', cursive;
 }
 
 .trendingCont {
@@ -154,10 +174,11 @@ table {
 	border-style: solid;
 	border-width: 0.2px;
 	border-color: rgb(217, 224, 231);
+	transition: transform 0.2s;
 }
 
 .trendingCont img:hover {
   border-color: greenyellow;
-  border-width: 1px;
+	transform: scale(1.1)
 }
 
