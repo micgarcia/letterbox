@@ -68,7 +68,7 @@ const Account = () => {
       <div className="watchedMovies">
       {id.map((ID, index) => {
           return (
-            <div key={ID} className='movieCont'>
+            <div key={ID} className='movieCont' id={ID}>
               <img src={urls[index]} alt=''/>
             </div>
           )
@@ -80,7 +80,7 @@ const Account = () => {
       <div className="futureMovies">
       {futureId.map((ID, index) => {
           return (
-            <div key={ID} className='movieCont'>
+            <div key={ID} className='movieCont' id={ID}>
               <img src={futureUrls[index]} alt=''/>
             </div>
           )

@@ -49,6 +49,7 @@
   width: 15%;
   min-width: 130px;
   max-width: 160px;
+  padding-bottom: 2em;
 }
 
 .futureMovies {
