@@ -59,7 +59,7 @@ table {
 	display: grid;
 	grid-template-rows: 75px 1fr;
 	min-width: 1200px;
-
+	overflow-x: hidden;
 
 }
 

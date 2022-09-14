@@ -6,6 +6,7 @@
   row-gap: 2em;
 
   background: linear-gradient(#2c3440, rgb(21, 24, 28) 30%);
+  overflow-x: hidden;
 }
 
 #navbar {
@@ -32,13 +33,14 @@
 
 .watchedMovies {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   width: 80%;
   justify-self: center;
 }
 
 .movieCont {
   display: grid;
+  justify-self: left;
   justify-items: center;
   align-items: center;
 }
@@ -51,7 +53,7 @@
 
 .futureMovies {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   width: 80%;
   justify-self: center;
 }
