@@ -62,9 +62,6 @@ const Account = () => {
   return (
     <div className="accountPage">
       <Navbar />
-      <div className="userEmail">
-        {user.email}
-      </div>
       <div className="watchedTitle">
         Watched Movies
       </div>
@@ -73,7 +70,6 @@ const Account = () => {
           return (
             <div key={ID} className='movieCont'>
               <img src={urls[index]} alt=''/>
-              <div key={index} className='movieTitle'>{titles[index]}</div>
             </div>
           )
         })}
@@ -86,7 +82,6 @@ const Account = () => {
           return (
             <div key={ID} className='movieCont'>
               <img src={futureUrls[index]} alt=''/>
-              <div key={index} className='movieTitle'>{futureTitles[index]}</div>
             </div>
           )
         })}

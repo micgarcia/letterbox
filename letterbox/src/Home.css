@@ -156,3 +156,8 @@ table {
 	border-color: rgb(217, 224, 231);
 }
 
+.trendingCont img:hover {
+  border-color: greenyellow;
+  border-width: 1px;
+}
+

@@ -1,7 +1,57 @@
-.movieCont img {
-  width: 25%;
-}
-
 .accountPage {
   color: white;
+  display: grid;
+  min-width: 900px;
+  grid-template-rows: 50px 25px 1fr 25px 1fr;
+  row-gap: 2em;
+}
+
+#navbar {
+  display: grid;
+  width: 60%;
+  grid-template-columns: 3fr repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+  color: white;
+}
+
+#accountLink, .logoutLink, #filmsLink, #loginLink, #createLink {
+  color: white;
+  font-size: 17px;
+}
+
+.watchedTitle {
+  font-size: 26px;
+  padding-left: 1em;
+}
+
+.watchedMovies {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  width: 80%;
+  justify-self: center;
+}
+
+.movieCont {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.movieCont img {
+  width: 15%;
+  min-width: 130px;
+  max-width: 160px;
+}
+
+.futureMovies {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  width: 80%;
+  justify-self: center;
+}
+
+.futureTitle {
+  font-size: 26px;
+  padding-left: 1em;
 }
