@@ -73,8 +73,8 @@ const Info = () => {
             <p className="tagline">{movie.tagline}</p>
             <p className="description">{movie.overview}</p>
           </div>
-          <button onClick={handleClick}>Add to Watched</button>
-          <button onClick={addFuture}>Add to Watch Later</button>
+          <button onClick={handleClick} id="watchButton">Add to Watched</button>
+          <button onClick={addFuture} id="futureButton">Add to Watch Later</button>
           <div className="movieStream">
 
           </div>

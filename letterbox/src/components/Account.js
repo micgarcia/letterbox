@@ -5,6 +5,8 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, onSnapshot, getDoc } from "firebase/firestore";
 import { db } from './utils/firebase.js';
 import '../Account.css';
+import { usePromiseTracker, trackPromise } from "react-promise-tracker";
+import {ThreeDots} from "react-loader-spinner";
 
 
 const Account = () => {
@@ -54,9 +56,28 @@ const Account = () => {
 
     }
     if (user.email) {
-      getData();
+      trackPromise(getData());
     }
   },[user])
+
+  const LoadingIndicator = props => {
+    const { promiseInProgress } = usePromiseTracker();
+
+    return (
+      promiseInProgress &&
+      <div
+      style={{
+        width: "100%",
+        height: "100",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+      }}
+      >
+        <ThreeDots type="ThreeDots" color="#2BAD60" height="100" width="100" />
+      </div>
+    );
+  }
 
 
   return (
@@ -66,25 +87,27 @@ const Account = () => {
         Watched Movies
       </div>
       <div className="watchedMovies">
-      {id.map((ID, index) => {
-          return (
-            <div key={ID} className='movieCont' id={ID}>
-              <img src={urls[index]} alt=''/>
-            </div>
-          )
-        })}
+        <LoadingIndicator />
+        {id.map((ID, index) => {
+            return (
+              <div key={ID} className='movieCont' id={ID}>
+                <img src={urls[index]} alt=''/>
+              </div>
+            )
+          })}
       </div>
       <div className="futureTitle">
         Watch Later Movies
       </div>
       <div className="futureMovies">
-      {futureId.map((ID, index) => {
-          return (
-            <div key={ID} className='movieCont' id={ID}>
-              <img src={futureUrls[index]} alt=''/>
-            </div>
-          )
-        })}
+        <LoadingIndicator />
+        {futureId.map((ID, index) => {
+            return (
+              <div key={ID} className='movieCont' id={ID}>
+                <img src={futureUrls[index]} alt=''/>
+              </div>
+            )
+          })}
       </div>
     </div>
   )

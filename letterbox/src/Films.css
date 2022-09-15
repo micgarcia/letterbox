@@ -32,11 +32,22 @@
   display: grid;
   justify-self: center;
   grid-template-rows: 1fr;
-  grid-template-columns: 75px 125px 200px 200px;
+  grid-template-columns: 75px 125px 200px 200px 100px 150px;
   padding-left: 2em;
   font-size: 20px;
   justify-items: center;
   align-items: center;
+}
+
+.filters input {
+  justify-self: right;
+  border-radius: 6px;
+  background-color: #dfe1e4;
+  border-style: none;
+}
+
+.filters input:focus {
+  outline: none;
 }
 
 label {
@@ -44,7 +55,13 @@ label {
   transition: transform 0.2s;
 }
 
-label:hover {
+#year:hover {
+  cursor: pointer;
+  color: greenyellow;
+  transform: scale(1.1)
+}
+
+#popularity:hover {
   cursor: pointer;
   color: greenyellow;
   transform: scale(1.1)

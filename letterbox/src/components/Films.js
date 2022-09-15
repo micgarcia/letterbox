@@ -2,37 +2,36 @@ import React, {useEffect} from 'react';
 import {useState} from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
-import { useLocation } from 'react-router-dom';
 import '../Films.css';
 import { usePromiseTracker, trackPromise } from "react-promise-tracker";
 import {ThreeDots} from "react-loader-spinner";
 
 const Films = () => {
 
-  const [trendingPics, setTrendingPics] = useState([]);
-  const [trendingIDs, setTrendingIDs] = useState([]);
   const [currentPics, setCurrentPics] = useState([]);
   const [currentIDs, setCurrentIDs] = useState([]);
 
-  useEffect(() => {
+  const setTrending = () => {
     for (let i = 1; i < 5; i++) {
-      fetch('https://api.themoviedb.org/3/trending/movie/week?api_key=5ea30c3df8f6f36a3bae33585f1396c7&page=' + i, {mode: 'cors'})
+      trackPromise(fetch('https://api.themoviedb.org/3/trending/movie/week?api_key=5ea30c3df8f6f36a3bae33585f1396c7&page=' + i, {mode: 'cors'})
       .then(function(response) {
         return response.json();
       })
       .then(function(response) {
-        console.log(response);
         for (let j = 0; j < 20; j++) {
           if (response.results[j].original_language === 'en') {
             setCurrentIDs((prevIDs) => [...prevIDs, response.results[j].id]);
             setCurrentPics((prevPics) => [...prevPics, ('https://image.tmdb.org/t/p/original' + response.results[j].poster_path)]);
           }
         }
-      })
+      }))
     }
     const title = document.querySelector('.resultsTitle');
     title.innerHTML = 'Trending Movies';
+  }
 
+  useEffect(() => {
+    setTrending();
   },[])
 
   const sortPop = () => {
@@ -40,7 +39,7 @@ const Films = () => {
     setCurrentPics([]);
 
     for (let i = 1; i < 5; i++) {
-      fetch('https://api.themoviedb.org/3/discover/movie?api_key=5ea30c3df8f6f36a3bae33585f1396c7&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=' + i, {mode: 'cors'})
+      trackPromise(fetch('https://api.themoviedb.org/3/discover/movie?api_key=5ea30c3df8f6f36a3bae33585f1396c7&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=' + i, {mode: 'cors'})
       .then(function(response) {
         return response.json();
       })
@@ -52,7 +51,7 @@ const Films = () => {
             setCurrentPics((prevPics) => [...prevPics, ('https://image.tmdb.org/t/p/original' + response.results[j].poster_path)]);
           }
         }
-      })
+      }))
     }
     const title = document.querySelector('.resultsTitle');
     title.innerHTML = 'Popular Movies';
@@ -63,7 +62,7 @@ const Films = () => {
     setCurrentPics([]);
 
     for (let i = 1; i < 5; i++) {
-      fetch('https://api.themoviedb.org/3/discover/movie?api_key=5ea30c3df8f6f36a3bae33585f1396c7&language=en&sort_by=release_date.desc&include_adult=false&include_video=false&page=' + i + '&year=2022&vote_average.gte=6', {mode: 'cors'})
+      trackPromise(fetch('https://api.themoviedb.org/3/discover/movie?api_key=5ea30c3df8f6f36a3bae33585f1396c7&language=en&sort_by=release_date.desc&include_adult=false&include_video=false&page=' + i + '&year=2022&vote_average.gte=6', {mode: 'cors'})
       .then(function(response) {
         return response.json();
       })
@@ -75,7 +74,7 @@ const Films = () => {
             setCurrentPics((prevPics) => [...prevPics, ('https://image.tmdb.org/t/p/original' + response.results[j].poster_path)]);
           }
         }
-      })
+      }))
     }
     const title = document.querySelector('.resultsTitle');
     title.innerHTML = 'Recent Movies';
@@ -107,6 +106,32 @@ const Films = () => {
     }
     const title = document.querySelector('.resultsTitle');
     title.innerHTML = genreName + ' Movies';
+  }
+
+  const handleSearch = () => {
+    setCurrentIDs([]);
+    setCurrentPics([]);
+    const query = document.getElementById('search').value;
+    if (query === '') {
+      return setTrending();
+    }
+    const title = document.querySelector('.resultsTitle');
+    title.innerHTML = query;
+
+    trackPromise(
+      fetch('https://api.themoviedb.org/3/search/movie?api_key=5ea30c3df8f6f36a3bae33585f1396c7&language=en-US&query=' + query + '&page=1&include_adult=false', {mode: 'cors'})
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(response) {
+        for (let j = 0; j < 20; j++) {
+          if (response.results[j].original_language === 'en') {
+            setCurrentIDs((prevIDs) => [...prevIDs, response.results[j].id]);
+            setCurrentPics((prevPics) => [...prevPics, ('https://image.tmdb.org/t/p/original' + response.results[j].poster_path)]);
+          }
+        }
+      })
+    )
   }
 
   const LoadingIndicator = props => {
@@ -156,9 +181,12 @@ const Films = () => {
             <option value="37">Western</option>
           </select>
 
-          <label htmlFor="year" onClick={sortRecent}>Sort By Recent</label>
+          <label htmlFor="year" onClick={sortRecent} id="year">Sort By Recent</label>
 
-          <label htmlFor="popularity" onClick={sortPop}>Sort By Popularity</label>
+          <label htmlFor="popularity" onClick={sortPop} id="popularity">Sort By Popularity</label>
+
+          <label htmlFor="search">Search</label>
+          <input type="text" id="search" onChange={handleSearch}/>
 
         </div>
         <div className="resultsTitle">
