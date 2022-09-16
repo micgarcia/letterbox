@@ -1,0 +1,63 @@
+.createAccountPage {
+  color: white;
+  display: grid;
+  min-width: 900px;
+  height: 100vh;
+  grid-template-rows: 75px 1fr;
+
+  background: linear-gradient(#2c3440, rgb(21, 24, 28) 40%);
+  overflow-x: hidden;
+  justify-items: center;
+}
+
+.createContent {
+  display: grid;
+  grid-template-rows: 100px 200px;
+  justify-items: center;
+  padding-top: 2em;
+}
+
+.createInfo {
+  display: grid;
+  justify-items: center;
+}
+
+.createTitle {
+  font-size: 22px;
+}
+
+.createInstructions {
+  font-size: 18px;
+}
+
+.createFormCont form {
+  display: grid;
+  grid-template-columns: 200px;
+  grid-template-rows: 30px 30px 30px 30px 50px;
+  justify-items: center;
+}
+
+.createFormCont label {
+  justify-self: left;
+  font-size: 16px;
+  align-self: center;
+}
+
+.createFormCont input {
+  height: 20px;
+  align-self: center;
+  border-radius: 5px;
+}
+
+.createFormCont input:focus {
+  outline: none;
+}
+
+.createFormCont button {
+  height: 25px;
+  align-self: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+

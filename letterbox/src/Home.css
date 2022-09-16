@@ -78,7 +78,7 @@ table {
 	================
 */
 
-#homePage #navbar {
+#navbar {
 	display: grid;
   width: 60%;
   grid-template-columns: 3fr repeat(3, 1fr);
@@ -141,8 +141,7 @@ table {
 
 .homeContent {
 	display: grid;
-	position: absolute;
-	z-index: -1;
+
 	width: 100%;
 	background-color: rgb(21, 24, 28);
 }
@@ -158,9 +157,6 @@ table {
 	border-radius: 25px;
 	opacity: 75%;
 }
-
-
-
 
 .siteDesc {
 	display: grid;

@@ -4,6 +4,7 @@
   min-width: 900px;
   grid-template-rows: 75px 1fr;
   row-gap: 2em;
+  height: 100%;
 
   background: linear-gradient(#2c3440, rgb(21, 24, 28) 10%);
   overflow-x: hidden;

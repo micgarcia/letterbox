@@ -3,6 +3,7 @@ import Navbar from './Navbar.js';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "firebase/auth";
 import { doc, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import { db } from './utils/firebase.js';
+import '../Create.css';
 
 const Create = () => {
 
@@ -33,15 +34,27 @@ const Create = () => {
   }
 
   return (
-    <div className="createAccount">
+    <div className="createAccountPage">
       <Navbar />
-      <form action="GET">
-        <label htmlFor="userEmail">Enter E-mail:</label>
-        <input type="email" id="userEmail" name="userEmail"/>
-        <label htmlFor="userPassword">Enter Password</label>
-        <input type="password" id="userPassword" name="userPassword"/>
-        <button onClick={handleSubmit}>Submit</button>
-      </form>
+      <div className="createContent">
+        <div className="createInfo">
+          <div className="createTitle">
+            Create Letterbox Account
+          </div>
+          <div className="createInstructions">
+            Please Enter Your Email Address and Password Below.
+          </div>
+        </div>
+        <div className="createFormCont">
+          <form action="GET">
+            <label htmlFor="userEmail">Enter E-mail:</label>
+            <input type="email" id="userEmail" name="userEmail"/>
+            <label htmlFor="userPassword">Enter Password</label>
+            <input type="password" id="userPassword" name="userPassword"/>
+            <button onClick={handleSubmit}>Submit</button>
+          </form>
+        </div>
+      </div>
     </div>
   )
 }
