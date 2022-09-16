@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/micgarcia/letterbox/static/css/main.33b712fa.css",
-    "main.js": "/micgarcia/letterbox/static/js/main.efbbe359.js",
+    "main.js": "/micgarcia/letterbox/static/js/main.4c9dfcb5.js",
     "index.html": "/micgarcia/letterbox/index.html",
     "main.33b712fa.css.map": "/micgarcia/letterbox/static/css/main.33b712fa.css.map",
-    "main.efbbe359.js.map": "/micgarcia/letterbox/static/js/main.efbbe359.js.map"
+    "main.4c9dfcb5.js.map": "/micgarcia/letterbox/static/js/main.4c9dfcb5.js.map"
   },
   "entrypoints": [
     "static/css/main.33b712fa.css",
-    "static/js/main.efbbe359.js"
+    "static/js/main.4c9dfcb5.js"
   ]
 }
