@@ -53,6 +53,15 @@ table {
 */
 .App {
 	font-family: 'Poppins', sans-serif;
+
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
 }
 
 #homePage {
@@ -98,11 +107,16 @@ table {
 	color: greenyellow;
 }
 
+.logoutLink {
+	justify-self: left;
+	padding-left: 1em;
+}
+
 #logo {
 	font-size: 32px;
 	align-self: center;
 	justify-self: left;
-	color: rgb(239, 241, 243);
+	color: yellowgreen;
 }
 
 #loginLink, #createLink, #filmsLink {

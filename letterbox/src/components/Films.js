@@ -185,7 +185,9 @@ const Films = () => {
 
           <label htmlFor="popularity" onClick={sortPop} id="popularity">Sort By Popularity</label>
 
-          <label htmlFor="search">Search</label>
+          <span class="material-symbols-outlined searchIcon">
+            search
+          </span>
           <input type="text" id="search" onChange={handleSearch}/>
 
         </div>

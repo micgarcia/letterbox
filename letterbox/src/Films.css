@@ -44,10 +44,22 @@
   border-radius: 6px;
   background-color: #dfe1e4;
   border-style: none;
+  height: 22px
 }
 
 .filters input:focus {
   outline: none;
+}
+
+.filters select {
+  height: 22px;
+  border-radius: 6px;
+  background-color: #dfe1e4;
+  font-family: 'Poppins', sans-serif;
+}
+
+.searchIcon {
+  justify-self: right;
 }
 
 label {

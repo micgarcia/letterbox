@@ -52,14 +52,14 @@ table {
   ============
 */
 
+
 .infoPage {
   color: white;
   display: grid;
   min-width: 900px;
   grid-template-rows: 75px 1fr;
-
-  background: linear-gradient(#2c3440, rgb(21, 24, 28) 10%);
-  overflow-x: hidden;
+	overflow-x: hidden;
+  background: linear-gradient(#2c3440, rgb(21, 24, 28) 7%);
 }
 
 #navbar {
@@ -76,25 +76,38 @@ table {
 
 .infoContent {
 	display: grid;
-	grid-template-rows: 1fr 2fr;
+	grid-template-rows: 1fr 1fr;
 	row-gap: 2em;
+	padding-top: 5%;
+	padding-bottom: 150px;
 }
 
 .backdrop {
-	display: grid;
-	min-width: 1000px;
+	display: block;
+	min-width: 1200px;
+  position:relative;
+	justify-self: center;
+}
+
+.backdrop:before {
+	display: block;
+	content:'';
+	position:absolute;
+	width:1200px;
+	height:100%;
+	box-shadow:inset 0px 0px 30px 30px rgba(21, 24, 28, 85);
 }
 
 .backdrop img {
 	justify-self: center;
-	width: 1000px;
+	width: 1200px;
 }
 
 .movieInfo {
 	display: grid;
-	grid-template-columns: 250px 600px;
+	grid-template-columns: 275px 300px 300px;
 	grid-template-rows: 250px 250px 30px;
-	padding-left: 4em;
+	justify-self: center;
 }
 
 .movieCover {
@@ -103,57 +116,88 @@ table {
 }
 
 .movieText {
-	grid-column: 2 / 3;
+	grid-column: 2 / 4;
 	grid-row: 1 / 3;
 	display: grid;
-	grid-template-columns: 400px 200px;
-	grid-template-rows: 50px 75px 400px;
+	grid-template-columns: 400px 250px;
+	grid-template-rows: 50px 75px 200px 200px;
 	align-items: center;
 }
 
 .title {
 	font-family: 'Abril Fatface', cursive;
-	font-size: 28px;
+	font-size: 36px;
 }
 
 .year {
 	font-size: 18px;
+	justify-self: center;
 }
 
 .runtime {
 	font-size: 18px;
+	justify-self: center;
 }
 
 .tagline {
 	grid-column: 1 / 2;
 	grid-row: 2 / 3;
-	font-size: 18px;
+	font-size: 20px;
+	color: yellowgreen;
 }
 
 .description {
 	grid-column: 1 / 2;
 	grid-row: 3 / 4;
-	font-size: 17px;
+	font-size: 18px;
 	font-weight: 500;
 	line-height: 1.75em;
 	align-self: start;
 }
 
 #watchButton {
-	grid-column: 1 / 2;
+	grid-column: 2 / 3;
 	grid-row: 3 / 4;
 	width: 150px;
+	justify-self: center;
+	font-family: 'Poppins', sans-serif;
+	border-style: none;
+	border-radius: 5px;
+	margin-bottom: 100px;
+}
+
+#watchButton:hover {
+	background-color: greenyellow;
+	font-weight: 600;
+	cursor: pointer;
 }
 
 #futureButton {
 	grid-column: 2 / 3;
 	grid-row: 3 / 4;
 	width: 150px;
+	justify-self: center;
+	align-self: center;
+	font-family: 'Poppins', sans-serif;
+	border-style: none;
+	border-radius: 5px;
+}
+
+#futureButton:hover {
+	background-color: greenyellow;
+	font-weight: 600;
+	cursor: pointer;
 }
 
 
 .movieCover img {
 	width: 225px
+}
+
+.movieStream {
+	grid-column: 2 / 3;
+	grid-row: 4 / 5;
+	align-self: start;
 }
 
 

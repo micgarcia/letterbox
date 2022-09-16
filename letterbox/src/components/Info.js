@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import {useState} from 'react';
-import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import { useLocation } from 'react-router-dom';
 import '../Info.css';
@@ -12,6 +11,7 @@ const Info = () => {
   const location = useLocation();
   const { from } = location.state;
   const [movie, setMovie] = useState({});
+  const [streams, setStreams] = useState({});
 
   /* fetches backdrop image for Nope */
   useEffect(() => {
@@ -22,6 +22,18 @@ const Info = () => {
       setMovie(json);
     }
     fetchMovie();
+
+    const fetchStream = async () => {
+      const data = await fetch('https://api.themoviedb.org/3/movie/' + from + '/watch/providers?api_key=5ea30c3df8f6f36a3bae33585f1396c7', {mode: 'cors'});
+      const json = await data.json();
+
+      setStreams(json);
+      if (streams['results']['US']) {
+        console.log(streams.results.US);
+      }
+    }
+    fetchStream();
+
 
   }, [])
 
@@ -72,12 +84,13 @@ const Info = () => {
             <p className="runtime">{movie.runtime} minutes</p>
             <p className="tagline">{movie.tagline}</p>
             <p className="description">{movie.overview}</p>
+            <button onClick={handleClick} id="watchButton">Add to Watched</button>
+            <button onClick={addFuture} id="futureButton">Add to Watch Later</button>
+            <div className="movieStream">
+              Streams:
+            </div>
           </div>
-          <button onClick={handleClick} id="watchButton">Add to Watched</button>
-          <button onClick={addFuture} id="futureButton">Add to Watch Later</button>
-          <div className="movieStream">
 
-          </div>
         </div>
       </div>
     </div>

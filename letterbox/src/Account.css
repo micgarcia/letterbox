@@ -2,11 +2,13 @@
   color: white;
   display: grid;
   min-width: 900px;
+  height: 100vh;
   grid-template-rows: 75px 25px 1fr 25px 1fr;
   row-gap: 2em;
 
   background: linear-gradient(#2c3440, rgb(21, 24, 28) 30%);
   overflow-x: hidden;
+
 }
 
 #navbar {

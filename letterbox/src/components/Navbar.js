@@ -38,7 +38,9 @@ const Navbar = () => {
       <Link to="/account" id="accountLink">
         {user.email}
       </Link>
-      <div className='logoutLink' onClick={logout}>Logout</div>
+      <span className="material-symbols-outlined logoutLink" onClick={logout}>
+        logout
+      </span>
       <Link to="/films" id="filmsLink">
         Films
       </Link>
