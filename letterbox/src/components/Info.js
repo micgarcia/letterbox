@@ -28,9 +28,7 @@ const Info = () => {
       const json = await data.json();
 
       setStreams(json);
-      if (streams['results']['US']) {
-        console.log(streams.results.US);
-      }
+      console.log(json.results.US);
     }
     fetchStream();
 
