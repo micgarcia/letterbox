@@ -71,13 +71,13 @@ label {
 #year:hover {
   cursor: pointer;
   color: greenyellow;
-  transform: scale(1.1)
+  transform: scale(1.1);
 }
 
 #popularity:hover {
   cursor: pointer;
   color: greenyellow;
-  transform: scale(1.1)
+  transform: scale(1.1);
 }
 
 .resultsTitle {
@@ -104,7 +104,7 @@ label {
   border-radius: 2px;
 	border-style: solid;
 	border-width: 0.2px;
-	border-color: rgb(217, 224, 231);
+  border-color: rgb(21, 24, 28);
   transition: transform .2s
 
 }
