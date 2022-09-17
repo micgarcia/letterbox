@@ -30,11 +30,16 @@
   font-size: 18px;
 }
 
+.loginFormCont {
+  display: grid;
+}
+
 .loginFormCont form {
   display: grid;
   grid-template-columns: 200px;
-  grid-template-rows: 30px 30px 30px 30px 50px;
+  grid-template-rows: 50px 30px 50px 30px 50px;
   justify-items: center;
+  justify-self: center;
 }
 
 .loginFormCont label {
@@ -57,7 +62,22 @@
   height: 25px;
   align-self: center;
   font-family: 'Poppins', sans-serif;
+  border-radius: 5px;
+  border-style: none;
 }
+
+.loginFormCont button:hover {
+  font-weight: 600;
+  background-color: greenyellow;
+}
+
+#success {
+  color: greenyellow;
+  font-size: 22px;
+  padding-top: 1em;
+  justify-self: center;
+}
+
 
 
 

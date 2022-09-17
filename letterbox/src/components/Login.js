@@ -14,10 +14,16 @@ const Login = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, userEmail, userPassword)
       .then((userCredential) => {
-
+        const success = document.createElement('div');
+        success.setAttribute('id', 'success');
+        success.innerHTML = 'Successfully Logged In!';
+        const form = document.querySelector('.loginFormCont');
+        form.appendChild(success);
+        userEmail.value = '';
+        userPassword.value = '';
       })
       .catch((error) => {
-        const errorMessage = error.message;
+
       })
   }
 

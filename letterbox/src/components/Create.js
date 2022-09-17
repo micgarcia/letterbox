@@ -23,6 +23,14 @@ const Create = () => {
         setDoc(doc(db, user.email, 'future'), {
           movies: []
         });
+
+        const created = document.createElement('div');
+        created.setAttribute('id', 'created');
+        created.innerHTML = 'Account Created Successfully!';
+        const form = document.querySelector('.createFormCont');
+        form.appendChild(created);
+        userEmail.value = '';
+        userPassword.value = '';
       })
       .catch((error) => {
         const errorMessage = error.message;
