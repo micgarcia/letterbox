@@ -48,6 +48,13 @@ const Info = () => {
       posters: arrayUnion(url),
       titles: arrayUnion(title)
     })
+
+    const added = document.createElement('div');
+    added.setAttribute('id','addedWatched');
+    added.innerHTML = 'Added!';
+    const button = document.getElementById('watchButton');
+    const movieText = document.querySelector('.movieText');
+    movieText.insertBefore(added, button);
   }
 
   const addFuture = () => {
@@ -63,6 +70,13 @@ const Info = () => {
       posters: arrayUnion(url),
       titles: arrayUnion(title)
     })
+
+    const added = document.createElement('div');
+    added.setAttribute('id','addedFuture');
+    added.innerHTML = 'Added!';
+    const button = document.getElementById('futureButton');
+    const movieText = document.querySelector('.movieText');
+    movieText.insertBefore(added, button);
   }
 
   return (

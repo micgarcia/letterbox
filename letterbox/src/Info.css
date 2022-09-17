@@ -166,6 +166,30 @@ table {
 	margin-bottom: 100px;
 }
 
+#addedWatched {
+	grid-column: 2 / 3;
+	grid-row: 3 / 4;
+	justify-self: center;
+	margin-bottom: 150px;
+	color: greenyellow;
+	animation: cssAnimation 3s forwards;
+}
+
+#addedFuture {
+	grid-column: 2 / 3;
+	grid-row: 3 / 4;
+	justify-self: center;
+	margin-bottom: 50px;
+	color: greenyellow;
+	animation: cssAnimation 3s forwards;
+}
+
+@keyframes cssAnimation {
+	0% {opacity: 1;}
+	90% {opacity: 1;}
+	100% {opacity: 0;}
+}
+
 #watchButton:hover {
 	background-color: greenyellow;
 	font-weight: 600;
