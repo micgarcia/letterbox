@@ -69,6 +69,13 @@
   font-size: 22px;
   padding-top: 1em;
   justify-self: center;
+  animation: cssAnimation 3s forwards;
+}
+
+@keyframes cssAnimation {
+	0% {opacity: 1;}
+	90% {opacity: 1;}
+	100% {opacity: 0;}
 }
 
 

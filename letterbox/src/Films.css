@@ -24,7 +24,7 @@
 .filmsContent {
   display: grid;
   grid-template-rows: 75px 75px 1fr;
-
+  height: 100vh;
 }
 
 
