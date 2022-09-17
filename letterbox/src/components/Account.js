@@ -93,10 +93,7 @@ const Account = () => {
           }
         }
       }
-      for (let i = 0; i < userData.movies.length; i++) {
-        setId(oldArray => [...oldArray, userData.movies[i]]);
-        setUrls(oldArray => [...oldArray, userData.posters[i]]);
-      }
+
       await updateDoc(docRef, newData);
       setData(newData);
     } else {
@@ -113,10 +110,7 @@ const Account = () => {
           }
         }
       }
-      for (let i = 0; i < userData.movies.length; i++) {
-        setFutureId(oldArray => [...oldArray, userData.movies[i]]);
-        setFutureUrls(oldArray => [...oldArray, userData.posters[i]]);
-      }
+
       await updateDoc(docRef, newData);
       setData(newData);
     }
