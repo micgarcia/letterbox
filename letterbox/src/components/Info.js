@@ -23,16 +23,17 @@ const Info = () => {
     }
     fetchMovie();
 
+  }, [])
+
+  useEffect(() => {
     const fetchStream = async () => {
       const data = await fetch('https://api.themoviedb.org/3/movie/' + from + '/watch/providers?api_key=5ea30c3df8f6f36a3bae33585f1396c7', {mode: 'cors'});
       const json = await data.json();
 
-      setStreams(json);
+      setStreams(json.results.US);
       console.log(json.results.US);
     }
     fetchStream();
-
-
   }, [])
 
   const handleClick = () => {
@@ -99,7 +100,34 @@ const Info = () => {
             <button onClick={handleClick} id="watchButton">Add to Watched</button>
             <button onClick={addFuture} id="futureButton">Add to Watch Later</button>
             <div className="movieStream">
-              Streams:
+                {streams.flatrate[0] !== undefined &&
+                  <div className="subscription">
+                    <img className="subLogo" alt='' src={'https://image.tmdb.org/t/p/original' + streams.flatrate[0].logo_path}/>
+                  </div>
+                }
+                {streams.flatrate[1] !== undefined &&
+                  <div className="subscription">
+                    <img className="subLogo" alt='' src={'https://image.tmdb.org/t/p/original' + streams.flatrate[1].logo_path}/>
+                  </div>
+                }
+                {streams.rent[0] !== undefined &&
+                  <div className="rent">
+                    <img className="rentLogo" alt='' src={'https://image.tmdb.org/t/p/original' + streams.rent[0].logo_path}/>
+                  </div>
+                }
+                {streams.rent[1] !== undefined &&
+                  <div className="rent">
+                    <img className="rentLogo" alt='' src={'https://image.tmdb.org/t/p/original' + streams.rent[1].logo_path}/>
+                  </div>
+                }
+                {streams.rent[2] !== undefined &&
+                  <div className="rent">
+                    <img className="rentLogo" alt='' src={'https://image.tmdb.org/t/p/original' + streams.rent[2].logo_path}/>
+                  </div>
+                }
+                <div className="source">
+                  Source: JustWatch
+                </div>
             </div>
           </div>
 

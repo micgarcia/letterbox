@@ -222,6 +222,21 @@ table {
 	grid-column: 2 / 3;
 	grid-row: 4 / 5;
 	align-self: start;
+	justify-self: center;
+
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+	grid-template-rows: repeat(auto-fit, minmax(100px, 1fr)) ;
+	justify-items: center;
+	align-items: center;
+}
+
+.movieStream img {
+	width: 50px;
+}
+
+.source {
+	padding-top: 1em;
 }
 
 
