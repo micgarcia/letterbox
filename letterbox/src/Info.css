@@ -226,9 +226,13 @@ table {
 
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-	grid-template-rows: repeat(auto-fit, minmax(100px, 1fr)) ;
+	grid-template-rows: repeat(auto-fit, minmax(26px, 1fr)) ;
 	justify-items: center;
 	align-items: center;
+}
+
+.movieStream div {
+	padding: 1em;
 }
 
 .movieStream img {
@@ -237,6 +241,9 @@ table {
 
 .source {
 	padding-top: 1em;
+	font-size: 12px;
+	justify-self: center;
+	text-align: center;
 }
 
 

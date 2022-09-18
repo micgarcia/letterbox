@@ -12,6 +12,8 @@ const Info = () => {
   const { from } = location.state;
   const [movie, setMovie] = useState({});
   const [streams, setStreams] = useState({});
+  const [streamNames, setStreamNames] = useState([]);
+  const [streamPics, setStreamPics] = useState([]);
 
   /* fetches backdrop image for Nope */
   useEffect(() => {
@@ -26,14 +28,26 @@ const Info = () => {
   }, [])
 
   useEffect(() => {
-    const fetchStream = async () => {
-      const data = await fetch('https://api.themoviedb.org/3/movie/' + from + '/watch/providers?api_key=5ea30c3df8f6f36a3bae33585f1396c7', {mode: 'cors'});
-      const json = await data.json();
-
-      setStreams(json.results.US);
-      console.log(json.results.US);
-    }
-    fetchStream();
+    fetch('https://api.themoviedb.org/3/movie/' + from + '/watch/providers?api_key=5ea30c3df8f6f36a3bae33585f1396c7', {mode: 'cors'})
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(response) {
+        setStreams(response.results.US);
+        for (let i = 0; i < 3; i++) {
+          if (response.results.US.flatrate[i]) {
+            setStreamNames((prevNames) => [...prevNames, response.results.US.flatrate[i].provider_name]);
+            setStreamPics((prevPics) => [...prevPics, 'https://image.tmdb.org/t/p/original' + (response.results.US.flatrate[i].logo_path)]);
+          }
+        }
+        for (let i = 0; i < 4; i++) {
+          if (response.results.US.rent[i]) {
+            setStreamNames((prevNames) => [...prevNames, response.results.US.rent[i].provider_name]);
+            setStreamPics((prevPics) => [...prevPics, 'https://image.tmdb.org/t/p/original' + (response.results.US.rent[i].logo_path)]);
+          }
+        }
+        console.log(response.results.US);
+      })
   }, [])
 
   const handleClick = () => {
@@ -80,6 +94,7 @@ const Info = () => {
     movieText.insertBefore(added, button);
   }
 
+
   return (
     <div className="infoPage">
       <Navbar />
@@ -100,34 +115,16 @@ const Info = () => {
             <button onClick={handleClick} id="watchButton">Add to Watched</button>
             <button onClick={addFuture} id="futureButton">Add to Watch Later</button>
             <div className="movieStream">
-                {streams.flatrate[0] !== undefined &&
-                  <div className="subscription">
-                    <img className="subLogo" alt='' src={'https://image.tmdb.org/t/p/original' + streams.flatrate[0].logo_path}/>
-                  </div>
-                }
-                {streams.flatrate[1] !== undefined &&
-                  <div className="subscription">
-                    <img className="subLogo" alt='' src={'https://image.tmdb.org/t/p/original' + streams.flatrate[1].logo_path}/>
-                  </div>
-                }
-                {streams.rent[0] !== undefined &&
-                  <div className="rent">
-                    <img className="rentLogo" alt='' src={'https://image.tmdb.org/t/p/original' + streams.rent[0].logo_path}/>
-                  </div>
-                }
-                {streams.rent[1] !== undefined &&
-                  <div className="rent">
-                    <img className="rentLogo" alt='' src={'https://image.tmdb.org/t/p/original' + streams.rent[1].logo_path}/>
-                  </div>
-                }
-                {streams.rent[2] !== undefined &&
-                  <div className="rent">
-                    <img className="rentLogo" alt='' src={'https://image.tmdb.org/t/p/original' + streams.rent[2].logo_path}/>
-                  </div>
-                }
-                <div className="source">
-                  Source: JustWatch
+              {streamNames.map((name, index) => {
+              return (
+                <div key={name} id={name}>
+                  <img src={streamPics[index]} alt='' key={index}/>
                 </div>
+              )
+              })}
+              <div className="source">
+                Source: JustWatch
+              </div>
             </div>
           </div>
 
@@ -138,3 +135,10 @@ const Info = () => {
 }
 
 export default Info;
+
+/*
+<div className="subscription">
+  <img className="subLogo" alt='' src={'https://image.tmdb.org/t/p/original' + streams.flatrate[0].logo_path}/>
+</div>
+
+*/
