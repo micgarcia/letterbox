@@ -13,7 +13,7 @@ const Films = () => {
 
   const setTrending = () => {
     for (let i = 1; i < 5; i++) {
-      trackPromise(fetch('https://api.themoviedb.org/3/trending/movie/week?api_key=5ea30c3df8f6f36a3bae33585f1396c7&page=' + i, {mode: 'cors'})
+      trackPromise(fetch('https://api.themoviedb.org/3/trending/movie/week?api_key=' + process.env.REACT_APP_MOVIE_API_KEY + '&page=' + i, {mode: 'cors'})
       .then(function(response) {
         return response.json();
       })
@@ -39,7 +39,7 @@ const Films = () => {
     setCurrentPics([]);
 
     for (let i = 1; i < 5; i++) {
-      trackPromise(fetch('https://api.themoviedb.org/3/discover/movie?api_key=5ea30c3df8f6f36a3bae33585f1396c7&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=' + i, {mode: 'cors'})
+      trackPromise(fetch('https://api.themoviedb.org/3/discover/movie?api_key=' + process.env.REACT_APP_MOVIE_API_KEY + '&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=' + i, {mode: 'cors'})
       .then(function(response) {
         return response.json();
       })
@@ -62,7 +62,7 @@ const Films = () => {
     setCurrentPics([]);
 
     for (let i = 1; i < 5; i++) {
-      trackPromise(fetch('https://api.themoviedb.org/3/discover/movie?api_key=5ea30c3df8f6f36a3bae33585f1396c7&language=en&sort_by=release_date.desc&include_adult=false&include_video=false&page=' + i + '&year=2022&vote_average.gte=6', {mode: 'cors'})
+      trackPromise(fetch('https://api.themoviedb.org/3/discover/movie?api_key=' + process.env.REACT_APP_MOVIE_API_KEY + '&language=en&sort_by=release_date.desc&include_adult=false&include_video=false&page=' + i + '&year=2022&vote_average.gte=6', {mode: 'cors'})
       .then(function(response) {
         return response.json();
       })
@@ -89,7 +89,7 @@ const Films = () => {
 
     for (let i = 1; i < 5; i++) {
       trackPromise(
-        fetch('https://api.themoviedb.org/3/discover/movie?api_key=5ea30c3df8f6f36a3bae33585f1396c7&language=en&sort_by=popularity.desc&include_adult=false&include_video=false&page=' + i + '&vote_average.gte=6&with_genres=' + genre, {mode: 'cors'})
+        fetch('https://api.themoviedb.org/3/discover/movie?api_key=' + process.env.REACT_APP_MOVIE_API_KEY + '&language=en&sort_by=popularity.desc&include_adult=false&include_video=false&page=' + i + '&vote_average.gte=6&with_genres=' + genre, {mode: 'cors'})
         .then(function(response) {
           return response.json();
         })
@@ -119,7 +119,7 @@ const Films = () => {
     title.innerHTML = query;
 
     trackPromise(
-      fetch('https://api.themoviedb.org/3/search/movie?api_key=5ea30c3df8f6f36a3bae33585f1396c7&language=en-US&query=' + query + '&page=1&include_adult=false', {mode: 'cors'})
+      fetch('https://api.themoviedb.org/3/search/movie?api_key='+ process.env.REACT_APP_MOVIE_API_KEY +'&language=en-US&query=' + query + '&page=1&include_adult=false', {mode: 'cors'})
       .then(function(response) {
         return response.json();
       })

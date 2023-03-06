@@ -13,7 +13,7 @@ const Home = () => {
   useEffect(() => {
     /* Supposed to fetch poster urls for trending movies */
     trackPromise(
-      fetch('https://api.themoviedb.org/3/trending/movie/week?api_key=5ea30c3df8f6f36a3bae33585f1396c7', {mode: 'cors'})
+      fetch('https://api.themoviedb.org/3/trending/movie/week?api_key='+ process.env.REACT_APP_MOVIE_API_KEY, {mode: 'cors'})
         .then(function(response) {
           return response.json();
         })

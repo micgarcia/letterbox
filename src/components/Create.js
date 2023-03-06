@@ -1,9 +1,10 @@
 import React from 'react';
 import Navbar from './Navbar.js';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "firebase/auth";
-import { doc, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 import { db } from './utils/firebase.js';
 import '../Create.css';
+
 
 const Create = () => {
 
@@ -13,6 +14,7 @@ const Create = () => {
     const userPassword = document.getElementById('userPassword').value;
 
     const auth = getAuth();
+
     createUserWithEmailAndPassword(auth, userEmail, userPassword)
       .then((userCredential) => {
         const user = userCredential.user;

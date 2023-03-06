@@ -7,6 +7,7 @@ import { doc, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import { db } from './utils/firebase.js';
 import { getAuth } from "firebase/auth";
 
+
 const Info = () => {
   const location = useLocation();
   const { from } = location.state;
@@ -18,7 +19,7 @@ const Info = () => {
   /* fetches backdrop image for Nope */
   useEffect(() => {
     const fetchMovie = async () => {
-      const data = await fetch('https://api.themoviedb.org/3/movie/' + from + '?api_key=5ea30c3df8f6f36a3bae33585f1396c7&language=en-US', {mode: 'cors'});
+      const data = await fetch('https://api.themoviedb.org/3/movie/' + from + '?api_key='+ process.env.REACT_APP_MOVIE_API_KEY +'&language=en-US', {mode: 'cors'});
       const json = await data.json();
 
       setMovie(json);
@@ -28,7 +29,7 @@ const Info = () => {
   }, [])
 
   useEffect(() => {
-    fetch('https://api.themoviedb.org/3/movie/' + from + '/watch/providers?api_key=5ea30c3df8f6f36a3bae33585f1396c7', {mode: 'cors'})
+    fetch('https://api.themoviedb.org/3/movie/' + from + '/watch/providers?api_key='+ process.env.REACT_APP_MOVIE_API_KEY, {mode: 'cors'})
       .then(function(response) {
         return response.json();
       })
@@ -135,10 +136,3 @@ const Info = () => {
 }
 
 export default Info;
-
-/*
-<div className="subscription">
-  <img className="subLogo" alt='' src={'https://image.tmdb.org/t/p/original' + streams.flatrate[0].logo_path}/>
-</div>
-
-*/

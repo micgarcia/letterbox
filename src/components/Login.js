@@ -5,7 +5,6 @@ import '../Login.css';
 
 
 const Login = () => {
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const userEmail = document.getElementById('userEmail').value;
