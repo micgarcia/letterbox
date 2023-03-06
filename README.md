@@ -1,6 +1,6 @@
 # Letterbox Clone Movie Tracker
 
-### Visit Live Site: https://micgarcia.github.io/letterbox/
+### Visit Live Site: https://michael-movie-tracker.netlify.app
 
 Create an account to track the movies that you have seen and the movies that you would like to watch later. In order to create an account, navigate to the Create Account link at the top of the page, then enter an email and password. You will be automatically logged in and can click on your email at the top of the screen, to navigate to your Account page where your Tracked Movies will be listed.
 
